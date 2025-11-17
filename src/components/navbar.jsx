@@ -11,8 +11,8 @@ function Navbar() {
         <p>Backstage</p>
       </div>
       <nav className="nav-links">
-        <a href="">Home</a>
-        <a href="">Marketplace</a>
+        <a href="/">Home</a>
+        <a href="/marketplace">Marketplace</a>
         <a href="">Dashboard</a>
       </nav>
       <button className="connect-btn">
