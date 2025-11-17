@@ -1,7 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Preview from "../assets/preview.png"
 import "./contentdetails.css";
-import { Play, Check, Download, Lock, Star, Clock } from "lucide-react";
+import Secure from "../assets/secure.png"
+import Fast from "../assets/fast.png"
+import Safe from "../assets/safe.png"
+import { Play, Check, Download, Lock, Star, Clock, Bell} from "lucide-react";
 
 const dummyData = [
   {
@@ -16,6 +20,7 @@ const dummyData = [
     price: {
       sui: 150,
       usd: 225,
+      paymenttype: "One-time payment",
     },
     description:
       "Dive deep into the making of “Echoes of Tomorrow”. Jane Doe’s latest sci-fi masterpiece...",
@@ -45,12 +50,59 @@ const dummyData = [
     price: {
       sui: 120,
       usd: 180,
+      paymenttype: "One-time payment",
     },
     description: "A behind-the-scenes look at Cosmic Dawn VFX process...",
     includes: ["Full VFX Breakdown", "Project Files", "Early Access"],
     activity: ["User002 watched 30 minutes", "User384 purchased access"],
   },
 ];
+
+const dumyData = [
+  {
+    id: 1,
+    title: "VFX Masterclass: Epic Battle Breakdown",
+    creator: { name: "Luna Films" },
+    price: { sui: 150, usd: 225 },
+    thumbnail: "https://images.unsplash.com/photo-1581091215367-59ab6b365952?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 2,
+    title: "Cosmic Dawn: VFX Breakdown",
+    creator: { name: "Nova Studios" },
+    price: { sui: 120, usd: 180 },
+    thumbnail: "https://images.unsplash.com/photo-1517511620798-cec17d428bc0?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 3,
+    title: "Wilderness Whisperer: Director's Cut",
+    creator: { name: "Echo Films" },
+    price: { sui: 100, usd: 150 },
+    thumbnail: "https://images.unsplash.com/photo-1596495577886-d920f1b1042e?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 4,
+    title: "Behind the Scenes: Galaxy Quest",
+    creator: { name: "Luna Films" },
+    price: { sui: 130, usd: 195 },
+    thumbnail: "https://images.unsplash.com/photo-1581092588406-df9f9c7d85c2?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 5,
+    title: "Animation Secrets: Dragon Flight",
+    creator: { name: "Luna Films" },
+    price: { sui: 160, usd: 240 },
+    thumbnail: "https://images.unsplash.com/photo-1593642634367-d91a135587b5?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 6,
+    title: "Nova Studios: Alien Worlds VFX",
+    creator: { name: "Nova Studios" },
+    price: { sui: 140, usd: 210 },
+    thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
+  },
+];
+
 
 const ContentDetails = () => {
   const { id } = useParams(); // get ID from URL
@@ -59,11 +111,12 @@ const ContentDetails = () => {
   if (!content) return <p>Content not found!</p>;
 
   return (
+    <>
     <div className="details-page">
       <div className="details-left">
         <div className="video-container">
           <img
-            src="https://images.unsplash.com/photo-1581091215367-59ab6b365952?auto=format&fit=crop&w=1200&q=80"
+            src={Preview}
             alt="Preview"
           />
           <button className="play-btn">
@@ -80,6 +133,7 @@ const ContentDetails = () => {
             <p>{content.creator.subscribers}</p>
           </div>
           <button className="follow-btn">+ Follow</button>
+          <p><Bell /></p>
         </div>
 
         <div className="section">
@@ -114,7 +168,7 @@ const ContentDetails = () => {
         <div className="price-card">
           <h1>{content.price.sui} Sui</h1>
           <p className="usd">{content.price.usd} USD</p>
-
+          <button className="payment-type">{content.price.paymenttype}</button>
           <div className="features">
             <p><Check size={16} /> Stream in Full HD anytime</p>
             <p><Download size={16} /> Download project files (2.4 GB)</p>
@@ -123,6 +177,11 @@ const ContentDetails = () => {
           </div>
 
           <button className="buy-btn">Buy Access for {content.price.sui} Sui</button>
+          <div className="secured">
+            <img src={Secure} />
+            <img src={Fast} />
+            <img src={Safe} />
+          </div>
         </div>
 
         <div className="creator-box">
@@ -147,6 +206,22 @@ const ContentDetails = () => {
         </div>
       </div>
     </div>
+    <div className="more-from-creator">
+  <h3>More from {content.creator.name}</h3>
+  <div className="carousel">
+    {dumyData
+      .filter(item => item.creator.name === content.creator.name && item.id !== content.id)
+      .map(item => (
+        <div key={item.id} className="carousel-card">
+          <img src={item.thumbnail} alt={item.title} />
+          <h4>{item.title}</h4>
+          <p className="price">{item.price.sui} Sui / {item.price.usd} USD</p>
+        </div>
+      ))}
+  </div>
+</div>
+
+    </>
   );
 };
 
