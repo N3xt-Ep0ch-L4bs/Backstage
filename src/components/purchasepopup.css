@@ -1,0 +1,210 @@
+.purchase-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+  backdrop-filter: blur(4px);
+}
+
+.purchase-popup {
+  width: 420px;
+  background: #0d0d0f;
+  border-radius: 18px;
+  padding: 25px;
+  color: #fff;
+  position: relative;
+  animation: fadeIn 0.2s ease-in-out;
+  border: 1px solid #222;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #1a1a1a;
+  border: none;
+  color: #ccc;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.purchase-title {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.purchase-sub {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.purchase-box {
+  background: #131418;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #222;
+}
+
+.purchase-content {
+  padding: 15px 20px;
+  border-top: 1px solid #222;
+  border: 1px solid #FFFFFF1A;
+  background: #FFFFFF08;
+  border-radius: 12px;
+}
+
+.purchase-content h4 {
+  margin: 0;
+}
+
+.creator {
+  font-size: 14px;
+  color: #bbb;
+}
+
+.access-tag {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  background: #0078FF26;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: #0078FF;
+}
+
+.purchase-price {
+  margin-top: 20px;
+  padding: 15px 20px;
+  border-top: 1px solid #222;
+  border: 1px solid #FFD70033;
+  background: #FFD7000D;
+  border-radius: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  border-top: 2px solid #FFFFFF1A;
+}
+
+.total-row span {
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: center;
+}
+
+.total-row h3 {
+  color: #ffd65a;
+}
+
+.access-rights {
+  margin-top: 20px;
+  padding: 15px 20px;
+  border-top: 1px solid #222;
+  border: 1px solid #FFFFFF1A;
+  background: #FFFFFF08;
+  border-radius: 12px;
+}
+
+.access-rights p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.checkcicle {
+  color: #0078FF;
+}
+
+.checks {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.checks label {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.confirm-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  background: #ffd338;
+  border: none;
+  color: #000;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cancel-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.secure-footer {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #999;
+  font-size: 13px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+.purchase-popup {
+  width: 420px;
+  background: #0d0d0f;
+  border-radius: 18px;
+  padding: 25px;
+  color: #fff;
+  position: relative;
+  animation: fadeIn 0.2s ease-in-out;
+  border: 1px solid #222;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.purchase-box {
+  background: #131418;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #222;
+  overflow-y: auto;
+  max-height: calc(90vh - 90px); 
+}
+
+.purchase-box::-webkit-scrollbar {
+  width: 6px;
+}
+.purchase-box::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 8px;
+}

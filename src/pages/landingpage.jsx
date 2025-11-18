@@ -4,7 +4,7 @@ import "./landingpage.css";
 import Navbar from "../components/navbar";
 
 function LandingPage() {
-
+  const navigate = useNavigate();
   return(
     <>
     
@@ -17,8 +17,8 @@ function LandingPage() {
           Secured by SEAL, stored forever on Walrus</p>
           <p>10,000+ Creators  <span>•</span>50,000+ BTS Videos  <span>•</span>  $2.5M+ Earned</p>
           <div className="hero-btn">
-            <button className="connect-btn">Connect Wallet</button>
-            <button className="explore-btn">Explore Marketplace</button>
+            <button className="connect-btn" >Connect Wallet</button>
+            <button onClick={() => navigate("/marketplace")} className="explore-btn">Explore Marketplace</button>
           </div>
      </div>
     </section>

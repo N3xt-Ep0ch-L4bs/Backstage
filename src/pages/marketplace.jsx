@@ -69,7 +69,7 @@ export default function Marketplace() {
   };
   
   const handleCardClick = (id) => {
-    navigate(`/content/${id}`); // navigate to individual content page
+    navigate(`/content/${id}`); 
   };
   return (
     <>

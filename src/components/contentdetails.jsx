@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Preview from "../assets/preview.png"
+import PurchasePopup from "./purchasepopup";
 import "./contentdetails.css";
 import Secure from "../assets/secure.png"
 import Fast from "../assets/fast.png"
@@ -105,8 +106,10 @@ const dumyData = [
 
 
 const ContentDetails = () => {
-  const { id } = useParams(); // get ID from URL
+  const { id } = useParams(); 
   const content = dummyData.find((item) => item.id === parseInt(id));
+
+  const [showPopup, setShowPopup] = React.useState(false);
 
   if (!content) return <p>Content not found!</p>;
 
@@ -176,7 +179,13 @@ const ContentDetails = () => {
             <p><Check size={16} /> 30-day satisfaction guarantee</p>
           </div>
 
-          <button className="buy-btn">Buy Access for {content.price.sui} Sui</button>
+          <button 
+            className="buy-btn"
+            onClick={() => setShowPopup(true)}
+          >
+            Buy Access for {content.price.sui} Sui
+          </button>
+
           <div className="secured">
             <img src={Secure} />
             <img src={Fast} />
@@ -220,7 +229,12 @@ const ContentDetails = () => {
       ))}
   </div>
 </div>
-
+{showPopup && (
+  <PurchasePopup 
+    content={content} 
+    onClose={() => setShowPopup(false)} 
+  />
+)}
     </>
   );
 };
